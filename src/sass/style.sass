@@ -1,0 +1,86 @@
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+html, body
+  height: 100%
+
+body
+  font-family: 'Montserrat', sans-serif
+  background-color: #eee
+  display: flex
+  justify-content: center
+  padding-top: 100px
+
+@keyframes dankjump
+  0%, 100%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+
+@keyframes ripple
+  0%
+    width: 0
+    height: 0
+    opacity: 1
+  50%
+    width: 40px
+    height: 40px
+    opacity: 1
+  100%
+    width: 40px
+    height: 40px
+    opacity: 0
+
+
+.wrapper
+  width: 500px
+  height: 300px
+  background-color: #fff
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.12)
+  display: flex
+  justify-content: center
+  align-items: center
+
+.input-checkbox-container
+  cursor: pointer
+  color: rgba(0, 0, 0, 0.87)
+  input[type="checkbox"]
+    position: absolute
+    display: none
+
+  > span
+    position: relative
+    top: 5px
+    width: 24px
+    height: 24px
+
+  svg
+    width: 24px
+    height: 24px
+    path
+      width: 100%
+      height: 100%
+      fill: rgba(0, 0, 0, 0.24)
+
+  input[type="checkbox"]
+    &:checked
+      ~ span
+        svg
+          animation: dankjump 0.2s 1 linear
+        path
+          fill: rgba(70, 130, 240, 1)
+        span
+          animation: ripple 0.3s 1 linear
+
+  span span
+    width: 0
+    height: 0
+    display: block
+    position: absolute
+    border-radius: 50%
+    top: 20%
+    left: 40%
+    transform: translate(-50%, -50%)
+    background-color: rgba(70, 130, 240, 0.3)
